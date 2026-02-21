@@ -1,0 +1,22 @@
+{
+    "name": "blue-carbon-blockchain",
+    "version": "1.0.0",
+    "type": "commonjs",
+    "main": "index.js",
+    "scripts": {
+        "compile": "hardhat compile",
+        "deploy": "hardhat run scripts/deploy.cjs --network amoy"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+        "@nomicfoundation/hardhat-verify": "^3.0.10",
+        "@nomicfoundation/hardhat-ethers": "^3.0.8",
+        "hardhat": "^2.22.1",
+        "ethers": "^6.13.1",
+        "chai": "^4.3.7",
+        "dotenv": "^16.4.5",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.4.5"
+    }
+}

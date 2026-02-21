@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Serif:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  BHARAT BLUE CARBON REGISTRY — Design System
+  Government of India–Grade UI: Official · Trustworthy · Accessible
+  All colors in HSL for consistent theming
+*/
+
+@layer base {
+  :root {
+    /* === GOVERNMENT BLUE PALETTE === */
+    --background: 210 20% 98%;
+    --foreground: 213 60% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 213 60% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 60% 12%;
+
+    /* Gov India Deep Blue */
+    --primary: 213 85% 22%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Carbon Green */
+    --secondary: 152 55% 28%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Light blue surface */
+    --muted: 213 30% 94%;
+    --muted-foreground: 213 25% 40%;
+
+    /* Saffron accent (India flag) */
+    --accent: 28 95% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 213 20% 85%;
+    --input: 213 20% 90%;
+    --ring: 213 85% 22%;
+
+    --radius: 0.375rem;
+
+    /* === SEMANTIC TOKENS === */
+    --gov-blue: 213 85% 22%;
+    --gov-blue-light: 213 70% 35%;
+    --gov-blue-pale: 213 50% 93%;
+    --carbon-green: 152 55% 28%;
+    --carbon-green-light: 152 45% 40%;
+    --carbon-green-pale: 152 40% 92%;
+    --saffron: 28 95% 52%;
+    --saffron-pale: 28 90% 93%;
+    --verified: 152 60% 32%;
+    --pending: 38 90% 50%;
+    --rejected: 0 72% 45%;
+    --info: 210 80% 45%;
+
+    /* === GRADIENTS === */
+    --gradient-gov: linear-gradient(135deg, hsl(213 85% 22%) 0%, hsl(213 70% 35%) 100%);
+    --gradient-green: linear-gradient(135deg, hsl(152 55% 28%) 0%, hsl(152 45% 40%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(213 85% 10% / 0.85) 0%, hsl(213 70% 20% / 0.60) 60%, transparent 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(213 30% 97%) 100%);
+
+    /* === SHADOWS === */
+    --shadow-card: 0 2px 12px hsl(213 30% 20% / 0.08), 0 1px 4px hsl(213 30% 20% / 0.06);
+    --shadow-elevated: 0 8px 32px hsl(213 40% 15% / 0.12), 0 2px 8px hsl(213 40% 15% / 0.08);
+    --shadow-gov: 0 4px 20px hsl(213 85% 22% / 0.20);
+
+    /* === SIDEBAR === */
+    --sidebar-background: 213 85% 18%;
+    --sidebar-foreground: 213 30% 88%;
+    --sidebar-primary: 28 95% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 213 60% 28%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 213 50% 25%;
+    --sidebar-ring: 213 70% 55%;
+  }
+
+  .dark {
+    --background: 213 40% 8%;
+    --foreground: 210 20% 92%;
+    --card: 213 35% 11%;
+    --card-foreground: 210 20% 92%;
+    --popover: 213 35% 11%;
+    --popover-foreground: 210 20% 92%;
+    --primary: 213 70% 55%;
+    --primary-foreground: 213 85% 8%;
+    --secondary: 152 45% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 213 30% 18%;
+    --muted-foreground: 213 20% 55%;
+    --accent: 28 85% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 213 25% 22%;
+    --input: 213 25% 18%;
+    --ring: 213 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Noto Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Noto Serif', 'Noto Sans', serif;
+    font-weight: 600;
+  }
+}
+
+/* === UTILITY CLASSES for GOV DESIGN === */
+@layer components {
+  .gov-header {
+    background: var(--gradient-gov);
+    @apply text-white shadow-lg;
+  }
+
+  .gov-sidebar {
+    background: hsl(var(--gov-blue));
+    @apply text-white;
+  }
+
+  .stat-card {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+    @apply rounded-lg border border-border p-4;
+  }
+
+  .status-verified {
+    background: hsl(var(--carbon-green-pale));
+    color: hsl(var(--carbon-green));
+    @apply text-xs font-semibold px-2 py-0.5 rounded-full;
+  }
+
+  .status-pending {
+    background: hsl(var(--saffron-pale));
+    color: hsl(var(--saffron));
+    @apply text-xs font-semibold px-2 py-0.5 rounded-full;
+  }
+
+  .status-rejected {
+    background: hsl(0 72% 95%);
+    color: hsl(var(--rejected));
+    @apply text-xs font-semibold px-2 py-0.5 rounded-full;
+  }
+
+  .btn-gov {
+    background: var(--gradient-gov);
+    box-shadow: var(--shadow-gov);
+    @apply text-white font-semibold rounded-md px-6 py-3 transition-all hover:opacity-90 active:scale-95;
+  }
+
+  .btn-green {
+    background: var(--gradient-green);
+    @apply text-white font-semibold rounded-md px-6 py-3 transition-all hover:opacity-90 active:scale-95;
+  }
+
+  .map-card {
+    @apply rounded-lg overflow-hidden border border-border;
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .data-table th {
+    background: hsl(var(--gov-blue-pale));
+    color: hsl(var(--gov-blue));
+    @apply text-xs font-semibold uppercase tracking-wide px-4 py-3;
+  }
+
+  .data-table td {
+    @apply px-4 py-3 text-sm border-b border-border;
+  }
+
+  .offline-badge {
+    @apply flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-full;
+    background: hsl(var(--saffron-pale));
+    color: hsl(var(--saffron));
+  }
+
+  .online-badge {
+    @apply flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-full;
+    background: hsl(var(--carbon-green-pale));
+    color: hsl(var(--carbon-green));
+  }
+
+  /* Pulse animation for live tracking */
+  .live-pulse {
+    @apply relative;
+  }
+
+  .live-pulse::before {
+    content: '';
+    @apply absolute inset-0 rounded-full animate-ping;
+    background: hsl(var(--carbon-green) / 0.4);
+  }
+
+  /* Blockchain chain link visual */
+  .chain-link {
+    @apply relative border-l-2 pl-4 pb-6;
+    border-color: hsl(var(--gov-blue-light));
+  }
+
+  .chain-link::before {
+    content: '';
+    @apply absolute -left-[9px] top-0 w-4 h-4 rounded-full border-2;
+    background: white;
+    border-color: hsl(var(--gov-blue-light));
+  }
+
+  .chain-link.active::before {
+    background: hsl(var(--gov-blue));
+  }
+
+  .chain-link.verified::before {
+    background: hsl(var(--carbon-green));
+    border-color: hsl(var(--carbon-green));
+  }
+
+  /* WCAG focus indicator */
+  :focus-visible {
+    outline: 3px solid hsl(var(--gov-blue));
+    outline-offset: 2px;
+  }
+
+  .input-field {
+    @apply w-full border border-border rounded-md px-3 py-2 text-sm text-foreground bg-background;
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent;
+    @apply transition-colors;
+  }
+
+  .btn-gov-secondary {
+    @apply font-semibold rounded-md px-4 py-2 transition-all;
+    @apply border border-border bg-white text-slate-700 hover:bg-slate-50 active:scale-95;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulseGreen {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 hsl(152 55% 28% / 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px hsl(152 55% 28% / 0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.3s ease-out both;
+}
+
+.animate-pulse-green {
+  animation: pulseGreen 2s ease-in-out infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--gov-blue-light));
+  border-radius: 3px;
+}
