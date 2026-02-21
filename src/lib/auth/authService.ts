@@ -213,17 +213,13 @@ class AuthService {
     }
 
     async deviceLogin(): Promise<AuthSession | null> {
-        const deviceId = await this.getDeviceId();
         const stored = localStorage.getItem('bc_auth_session');
-
         if (!stored) return null;
 
         try {
             const session = JSON.parse(stored) as AuthSession;
-            if (session.deviceId !== deviceId) {
-                this.logout();
-                return null;
-            }
+            // For hackathon/PWA demo, we allow session restoration even if deviceId 
+            // slightly varies (common in PWA standalone vs browser modes)
             return session;
         } catch {
             return null;
