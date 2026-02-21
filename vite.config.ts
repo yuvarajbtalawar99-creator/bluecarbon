@@ -76,18 +76,21 @@ export default defineConfig(({ mode }) => ({
           },
         ],
       },
+      devOptions: {
+        enabled: false,
+      },
       workbox: {
+        navigateFallback: "/index.html",
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/.*\.supabase\.co\/.*/i,
+            urlPattern: ({ url }) =>
+              url.hostname.includes("supabase.co") &&
+              (url.pathname.startsWith("/rest/v1/") || url.pathname.startsWith("/storage/v1/")),
             handler: "NetworkFirst",
+            method: "GET",
             options: {
               cacheName: "supabase-api-cache",
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 5, // 5 minutes
-              },
               cacheableResponse: {
                 statuses: [0, 200],
               },
