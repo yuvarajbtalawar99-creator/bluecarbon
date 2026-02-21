@@ -122,19 +122,7 @@ export default function Index() {
     fetchStats();
   }, []);
 
-  // 3. Auto-Redirection if logged in
-  useEffect(() => {
-    const checkRedirect = async () => {
-      const session = await authService.deviceLogin();
-      if (session) {
-        if (session.user.role === 'developer') navigate('/developer');
-        else if (session.user.role === 'admin') navigate('/admin');
-        else if (session.user.role === 'verifier') navigate('/verifier');
-        else if (session.user.role === 'corporate') navigate('/corporate');
-      }
-    };
-    checkRedirect();
-  }, [navigate]);
+
 
   return (
     <div className="min-h-screen bg-background font-sans">
