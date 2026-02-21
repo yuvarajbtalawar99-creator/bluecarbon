@@ -6,7 +6,7 @@ import {
   TreePine, Plus, MapPin, Camera, Clock, User, ChevronLeft,
   History, Building2, Navigation, Bell, ArrowLeft, Wifi,
   Battery, WifiOff, CheckCircle2, ChevronRight, Play, Square,
-  Shield, XCircle, Leaf, Waves, AlertCircle, FileUp, Video, Smartphone, Phone
+  Shield, XCircle, Leaf, Waves, AlertCircle, FileUp, Video, Smartphone, Phone, Globe
 } from "lucide-react";
 import {
   Dialog, DialogContent, DialogHeader,
